@@ -1,6 +1,7 @@
 <?php
+namespace Moe\WebtCoreViewsInMvc\Model\Entity;
 class HotelModel {
-    public function __construct(public $name, public $description){}
+    public function __construct(public string $name, public string $description){}
     
     public function getName() {    
         return $this->name;
