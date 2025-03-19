@@ -1,10 +1,12 @@
 <?php
 class HotelModel {
-    public static function getHotels() {
-        return [
-            ["name" => "Bellagio", "description" => "Luxury resort and casino with a famous fountain show."],
-            ["name" => "The Venetian", "description" => "Inspired by Venice, featuring canals and gondolas."],
-            ["name" => "Caesars Palace", "description" => "Iconic Roman-themed hotel and casino."],
-        ];
+    public function __construct(public $name, public $description){}
+    
+    public function getName() {    
+        return $this->name;
+    }
+
+    public function getDescription() {
+        return $this->description;
     }
 }

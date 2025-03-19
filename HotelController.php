@@ -1,14 +1,19 @@
 <?php
-require_once __DIR__ . '/../models/HotelModel.php';
+require_once __DIR__ . './HotelModel.php';
 
 class HotelController {
     public function renderView() {
-        $hotels = HotelModel::getHotels();
-        $template = file_get_contents(__DIR__ . '/../views/template.html');
+        $hotels = [
+            new HotelModel('Bellagio', 'Luxury resort and casino with a famous fountain show.'),
+            new HotelModel('The Venitian', 'Inspired by Venice featuring canals and gondolas.'),
+            new HotelModel('Ceasars Palace', 'Inspired Roman-themed hotel and casino.')
+        ];
+
+        $template = file_get_contents(__DIR__ . './template.html');
 
         $hotelHtml = "";
         foreach ($hotels as $hotel) {
-            $hotelHtml .= "<div class='hotel'><h2>{$hotel['name']}</h2><p>{$hotel['description']}</p></div>\n";
+            $hotelHtml .= "<div class='hotel'><h2>{$hotel->getName()}</h2><p>{$hotel->getDescription()}</p></div>\n";
         }
 
         echo str_replace("{{HOTEL_LIST}}", $hotelHtml, $template);
